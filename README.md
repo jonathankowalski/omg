@@ -1,4 +1,4 @@
-# Open My Graph
+# Open My Graph [![Build Status](https://travis-ci.org/jonathankowalski/omg.svg?branch=master)](https://travis-ci.org/jonathankowalski/omg)
 A fast open graph parser
 
 ## Usage
