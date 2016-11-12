@@ -1,7 +1,6 @@
 {
   "name": "jonathankowalski/omg",
-  "description": "OpenMyGraph : a quick open graph parser",
-  "minimum-stability": "dev",
+  "description": "A fast open graph parser",
   "license": "MIT",
   "authors": [
     {
@@ -9,7 +8,7 @@
       "email": "jonathankowalski@ymail.com"
     }
   ],
-  "version":"1.0.0",
+  "keywords":["opengraph","facebook","og","OpenGraph Protocol"],
   "require":{
     "php":">=5.6"
   },

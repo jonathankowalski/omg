@@ -24,3 +24,11 @@ $tab = $parserTwitter->parse('http://www.enkulte.fr');
 echo $tab['twitter:site']; //@Enkulte
 
 ```
+
+## Test with PhpUnit
+
+```
+curl -s https://getcomposer.org/installer | php
+php composer.phar install --dev
+./vendor/bin/phpunit
+```
