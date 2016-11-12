@@ -23,6 +23,10 @@ class Parser
         return $this->extract($htmlContent);
     }
 
+    public function parseContent($content){
+        return $this->extract($content);
+    }
+
     protected function fetchUrl($url)
     {
         if(!$url){
