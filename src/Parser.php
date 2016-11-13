@@ -33,18 +33,37 @@ class Parser
             throw new CantFetchException;
         }
 
-        $ch = curl_init($url);
+        $ch = curl_init();
 
-        $agent= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
+        $agents = [
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:7.0.1) Gecko/20100101 Firefox/7.0.1',
+            'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.9) Gecko/20100508 SeaMonkey/2.0.4',
+            'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
+            'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; da-dk) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1'
+
+        ];
+        curl_setopt($ch,CURLOPT_USERAGENT,$agents[array_rand($agents)]);
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_VERBOSE, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, $agent);
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
+        //set the header params
+        $header = [
+            "Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5",
+            "Cache-Control: max-age=0",
+            "Connection: keep-alive",
+            "Keep-Alive: 300",
+            "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7",
+            "Accept-Language: en-us,en,fr;q=0.5",
+            "Pragma: "
+        ];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
         $response = curl_exec($ch);
+
 
         curl_close($ch);
 

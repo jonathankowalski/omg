@@ -15,6 +15,12 @@ class ParserTest extends TestCase
         self::$parser = new Parser();
     }
 
+    public function testHttps(){
+        $o = self::$parser->parse('https://slack.com');
+
+        $this->assertNotEmpty($o);
+    }
+
     public function testFetch()
     {
         $o = self::$parser->parse(
